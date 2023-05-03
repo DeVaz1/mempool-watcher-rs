@@ -1,0 +1,17 @@
+[package]
+name = "mempool-watcher-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ethers = { version = "2.0.4", features = ["ws"] }
+tokio = { version = "1", features = ["macros"] }
+reqwest = { version = "0.11", default-features = false }
+
+
+[features]
+default = ['openssl']
+openssl = ['ethers/openssl', 'reqwest/default-tls']
+rustls = ['ethers/rustls', 'reqwest/rustls-tls']
