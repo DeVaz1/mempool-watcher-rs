@@ -31,7 +31,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .subscribe_pending_txs()
         .await
         .unwrap()
-        .transactions_unordered(200);
+        .transactions_unordered(50)
+        .fuse();
 
     while let Some(tx) = stream.next().await {
         let tx = match tx {
